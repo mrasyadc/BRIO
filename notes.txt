@@ -1,0 +1,1 @@
+source_ver_1 -> source version before splitting the dataset and not yet remove text that have the same length as the summary generated (belum diremove teks yang ringkasannya sama saja dengan teks awalnya)
