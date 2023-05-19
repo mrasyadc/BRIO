@@ -16,8 +16,8 @@ def collect_diverse_beam_data(args):
     cands = []
     cands_untok = []
     cnt = 0
-    with open(os.path.join(src_dir, f"{split}.source.tokenized")) as src, open(os.path.join(src_dir, f"{split}.target.tokenized")) as tgt, open(os.path.join(src_dir, f"{split}.source")) as src_untok, open(os.path.join(src_dir, f"{split}.target")) as tgt_untok:
-        with open(os.path.join(src_dir, f"{split}.out.tokenized")) as f_1, open(os.path.join(src_dir, f"{split}.out")) as f_2:
+    with open(os.path.join(src_dir, f"{split}.source.tokenized"), encoding="utf8", errors='ignore') as src, open(os.path.join(src_dir, f"{split}.target.tokenized"), encoding="utf8", errors='ignore') as tgt, open(os.path.join(src_dir, f"{split}.source"), encoding="utf8", errors='ignore') as src_untok, open(os.path.join(src_dir, f"{split}.target"), encoding="utf8", errors='ignore') as tgt_untok:
+        with open(os.path.join(src_dir, f"{split}.out.tokenized"), encoding="utf8", errors='ignore') as f_1, open(os.path.join(src_dir, f"{split}.out"), encoding="utf8", errors='ignore') as f_2:
             for (x, y) in zip(f_1, f_2):
                 x = x.strip()
                 if args.lower:
@@ -56,7 +56,7 @@ def build_diverse_beam(input):
     abstract = sent_tokenize(tgt_line)
     _abstract = "\n".join(abstract)
     article = sent_tokenize(src_line)
-    
+
     if dataset == "xsum":
         def compute_rouge(hyp):
             score = all_scorer.score(_abstract, "\n".join(hyp))
@@ -72,19 +72,19 @@ def build_diverse_beam(input):
     article_untok = sent_tokenize(src_line_untok)
     candidates_untok = [(cands_untok[i], candidates[i][1]) for i in range(len(candidates))]
     output = {
-        "article": article, 
+        "article": article,
         "abstract": abstract,
         "candidates": candidates,
-        "article_untok": article_untok, 
+        "article_untok": article_untok,
         "abstract_untok": abstract_untok,
         "candidates_untok": candidates_untok,
-        }
-    with open(tgt_dir, "w") as f:
+    }
+    with open(tgt_dir, "w", encoding="utf8") as f:
         json.dump(output, f)
 
 
 def make_diverse_beam_data(args):
-    with open(os.path.join(args.src_dir, f"{args.split}.source")) as f:
+    with open(os.path.join(args.src_dir, f"{args.split}.source"), encoding="utf8", errors='ignore') as f:
         num = sum(1 for _ in f)
     data = collect_diverse_beam_data(args)
     with Pool(processes=8) as pool:
