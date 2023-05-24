@@ -19,6 +19,7 @@ from label_smoothing_loss import label_smoothing_loss
 from nltk import sent_tokenize, word_tokenize
 from config import cnndm_setting, xsum_setting
 from tqdm import tqdm
+import time
 
 logging.getLogger("transformers.tokenization_utils").setLevel(logging.ERROR)
 logging.getLogger("transformers.tokenization_utils_base").setLevel(logging.ERROR)
@@ -333,6 +334,8 @@ def test(dataloader, gen_dataloader, model, args, tok, gpuid, do_sample=False):
 
 
 def run(rank, args):
+    start = time.time()
+
     if args.config == "cnndm":
         cnndm_setting(args)
     elif args.config == "xsum":
@@ -510,6 +513,9 @@ def run(rank, args):
                     else:
                         recorder.save(model, "model_cur.bin")
                     recorder.save(s_optimizer, "optimizer.bin")
+    end = time.time()
+    recorder.print("execution time: ")
+    recorder.print(timer(start, end))
 
 
 def main(args):
@@ -520,6 +526,12 @@ def main(args):
         mp.spawn(run, args=(args,), nprocs=len(args.gpuid), join=True)
     else:
         run(0, args)
+
+def timer(start, end):
+    recorder = Recorder
+    hours, rem = divmod(end-start, 3600)
+    minutes, seconds = divmod(rem, 60)
+    return "{:0>2}:{:0>2}:{:05.2f}".format(int(hours), int(minutes), seconds)
 
 if __name__ ==  "__main__":
     parser = argparse.ArgumentParser(description='Parameters')
