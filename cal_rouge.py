@@ -40,7 +40,7 @@ def eval_rouge(dec_dir, ref_dir, Print=False):
         print(output)
     if Print is True:
         rouge_path = join(dec_dir, '../ROUGE.txt')
-        with open(rouge_path, 'w', encoding="utf8", errors="ignore") as f:
+        with open(rouge_path, 'w') as f:
             print(output, file=f)
     return R_1, R_2, R_L
 
@@ -59,7 +59,7 @@ if __name__ == '__main__':
                 line = line.strip()
                 if args.lower:
                     line = line.lower()
-                with open(join(ref_dir, f"{i}.ref"), 'w', encoding="utf8", errors="ignore") as f2:
+                with open(join(ref_dir, f"{i}.ref"), 'w') as f2:
                     for x in sent_tokenize(line):
                         print(x, file=f2)
         hyp_dir = tempfile.mkdtemp()
@@ -68,7 +68,7 @@ if __name__ == '__main__':
                 line = line.strip()
                 if args.lower:
                     line = line.lower()
-                with open(join(hyp_dir, f"{i}.dec"), 'w', encoding="utf8", errors="ignore") as f2:
+                with open(join(hyp_dir, f"{i}.dec"), 'w') as f2:
                     for x in sent_tokenize(line):
                         print(x, file=f2)
     else:
