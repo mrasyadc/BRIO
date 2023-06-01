@@ -1,1 +1,6 @@
 source_ver_1 -> source version before splitting the dataset and not yet remove text that have the same length as the summary generated (belum diremove teks yang ringkasannya sama saja dengan teks awalnya)
+source_ver_3 -> split 6:2:2, remove nan, remove attributes that majority of its contents is not summarized, remove outlier Q1 Q3
+source_ver_4 -> split 8:1:1, remove nan, remove attributes that majority of its contents is not summarized, CI 95
+source_ver_5 -> split 8:1:1, remove nan, remove attributes that majority of its contents is not summarized
+source_ver_6 -> split 7:1:2, remove nan, remove attributes that majority of its contents is not summarized
+source_ver_7 -> split 7:1.5:1.5 remove nan, remove attributes that majority of its contents is not summarized
