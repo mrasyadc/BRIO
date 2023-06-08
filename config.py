@@ -1,9 +1,9 @@
 def cnndm_setting(args):
     # default setting for cnndm
-    args.batch_size = getattr(args, 'batch_size', 4)
+    args.batch_size = getattr(args, 'batch_size', 8)
     args.epoch = getattr(args, 'epoch', 100)
-    args.report_freq = getattr(args, "report_freq", 50)
-    args.accumulate_step = getattr(args, "accumulate_step", 4)
+    args.report_freq = getattr(args, "report_freq", 1)
+    args.accumulate_step = getattr(args, "accumulate_step", 2)
     args.margin = getattr(args, "margin", 0.001)
     args.gold_margin = getattr(args, "gold_margin", 0)
     args.gold_weight = getattr(args, "gold_weight", 0)
