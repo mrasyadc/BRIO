@@ -4,3 +4,6 @@ source_ver_4 -> split 8:1:1, remove nan, remove attributes that majority of its 
 source_ver_5 -> split 8:1:1, remove nan, remove attributes that majority of its contents is not summarized
 source_ver_6 -> split 7:1:2, remove nan, remove attributes that majority of its contents is not summarized
 source_ver_7 -> split 7:1.5:1.5 remove nan, remove attributes that majority of its contents is not summarized
+source_ver_8 -> split 9:0.5:0.5 remove nan, remove attributes that majority of its contents is not summarized
+source_ver_9 -> split 7:2:1 remove nan, remove attributes that majority of its contents is not summarized
+source_ver_10 -> split 6:2:2 remove nan, remove attributes that majority of its contents is not summarized
