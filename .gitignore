@@ -8,3 +8,4 @@ cache/
 result/
 compare-mt/
 .vscode/
+.DS_Store

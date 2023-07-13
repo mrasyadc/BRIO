@@ -7,4 +7,7 @@ source_ver_7 -> split 7:1.5:1.5 remove nan, remove attributes that majority of i
 source_ver_8 -> split 9:0.5:0.5 remove nan, remove attributes that majority of its contents is not summarized
 source_ver_9 -> split 7:2:1 remove nan, remove attributes that majority of its contents is not summarized
 source_ver_10 -> split 6:2:2 remove nan, remove attributes that majority of its contents is not summarized
-tes
+
+source_ver_11 -> split 9:0.5:0.5 remove nan, remove attributes that majority of its contents is not summarized, stratified split
+source_ver_12 -> split 7:2:1 remove nan, remove attributes that majority of its contents is not summarized, stratified split
+source_ver_13 -> split 6:2:2 remove nan, remove attributes that majority of its contents is not summarized, stratified split
